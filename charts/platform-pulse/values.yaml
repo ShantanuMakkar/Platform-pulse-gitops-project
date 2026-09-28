@@ -1,0 +1,24 @@
+replicaCount: 1
+
+image:
+  repository: 571062159919.dkr.ecr.us-east-1.amazonaws.com/platform-pulse
+  tag: "2c6b32ee16df3a7fce104ee2652db23417f8a2e9"
+  pullPolicy: IfNotPresent
+
+awsRegion: us-east-1
+dynamodbTable: platform-pulse-dev-hits
+
+serviceAccount:
+  name: platform-pulse
+  roleArn: arn:aws:iam::571062159919:role/platform-pulse-dev-app-irsa
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    memory: 128Mi
